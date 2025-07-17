@@ -1,0 +1,37 @@
+version: "3.8"
+
+services:
+
+  postgres:
+    image: postgres
+    container_name: devotel-postgres
+    ports:
+      - ${DATABASE_FORWARD_PORT}:5432
+    environment:
+      POSTGRES_PASSWORD: "${DATABASE_PASSWORD}"
+    volumes:
+      - ./data/postgres:/var/lib/postgresql/data
+    restart: unless-stopped
+
+  nestjs:
+    build:
+      context: ./
+      dockerfile: nestjs-dockerfile
+    container_name: nestjs
+    working_dir: /usr/src/nestjs
+    tty: true
+    volumes:
+      - ./nestjs:/usr/src/nestjs
+      - type: bind
+        source: ./.env
+        target: /usr/src/nestjs/.env
+    # command: npm run start:dev
+    ports:
+      - '3000:3000'
+    depends_on:
+      - postgres
+    restart: unless-stopped
+
+volumes:
+  postgres_data:
+    driver: local
