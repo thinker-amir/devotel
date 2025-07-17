@@ -25,7 +25,13 @@ services:
       - type: bind
         source: ./.env
         target: /usr/src/nestjs/.env
-    # command: npm run start:dev
+    command: >
+      sh -c "
+      if [ \"$NODE_ENV\" = \"development\" ]; then
+        pnpm run start:dev;
+      else
+        pnpm install && pnpm run start;
+      fi"
     ports:
       - '3000:3000'
     depends_on:
