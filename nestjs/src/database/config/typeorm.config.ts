@@ -1,11 +1,11 @@
-import { registerAs } from '@nestjs/config';
-import { config as dotenvConfig } from 'dotenv';
-import { DataSource, DataSourceOptions } from 'typeorm';
+import { registerAs } from '@nestjs/config'
+import { config as dotenvConfig } from 'dotenv'
+import { DataSource, DataSourceOptions } from 'typeorm'
 
-const environmentName = process.env.NODE_ENV || 'development';
-console.info(`The environment is: ${environmentName}`);
+const environmentName = process.env.NODE_ENV || 'development'
+console.info(`The environment is: ${environmentName}`)
 
-dotenvConfig({ quiet: true });
+dotenvConfig({ quiet: true })
 
 const config = {
   type: 'postgres',
@@ -18,7 +18,8 @@ const config = {
   synchronize: false,
   entities: ['dist/**/*.entity{.ts,.js}'],
   migrations: ['dist/database/migrations/*{.ts,.js}'],
-};
+  logging: ['query'],
+}
 
 const configEnvMap = new Map<string, Partial<DataSourceOptions>>([
   [
@@ -36,15 +37,15 @@ const configEnvMap = new Map<string, Partial<DataSourceOptions>>([
       dropSchema: true,
     },
   ],
-]);
+])
 
 function getConfig(): DataSourceOptions {
-  const envConfig = configEnvMap.get(environmentName);
+  const envConfig = configEnvMap.get(environmentName)
   if (envConfig === undefined) {
-    throw new Error(`Unexpected value [${environmentName}]`);
+    throw new Error(`Unexpected value [${environmentName}]`)
   }
-  return { ...config, ...envConfig } as DataSourceOptions;
+  return { ...config, ...envConfig } as DataSourceOptions
 }
 
-export default registerAs('typeormConfig', () => getConfig());
-export const connectionSource = new DataSource(config as DataSourceOptions);
+export default registerAs('typeormConfig', () => getConfig())
+export const connectionSource = new DataSource(config as DataSourceOptions)
