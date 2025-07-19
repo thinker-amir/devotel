@@ -70,6 +70,20 @@ describe('JobService', () => {
       findOne: jest.fn(),
       create: jest.fn(),
       save: jest.fn(),
+      manager: {
+        connection: {
+          createQueryRunner: jest.fn(),
+          options: {},
+        },
+      },
+      metadata: {
+        connection: {
+          options: {},
+        },
+        columns: [],
+      },
+      target: {},
+      createQueryBuilder: jest.fn(),
     }
 
     mockCompanyRepo = {
