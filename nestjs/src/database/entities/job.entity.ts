@@ -36,16 +36,14 @@ export class Job {
   @JoinColumn({ name: 'company_id' })
   company: Company
 
-  // eslint-disable-next-line @typescript-eslint/no-unsafe-return
   @ManyToMany(() => Skill, (skill) => skill.jobs, { cascade: true })
   @JoinTable({
-    name: 'job_skill',
+    name: 'job_skills',
     joinColumn: { name: 'job_id', referencedColumnName: 'id' },
     inverseJoinColumn: { name: 'skill_id', referencedColumnName: 'id' },
   })
   skills: Skill[]
 
-  // eslint-disable-next-line @typescript-eslint/no-unsafe-return
   @OneToMany(() => ProviderJob, (providerJob) => providerJob.job)
   providerJobs: ProviderJob[]
 }

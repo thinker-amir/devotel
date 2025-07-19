@@ -10,6 +10,9 @@ export class Company {
   name: string
 
   @Column({ nullable: true })
+  website: string
+
+  @Column({ nullable: true })
   industry: string
 
   @OneToMany(() => Job, (job) => job.company)

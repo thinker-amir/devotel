@@ -10,10 +10,9 @@ export class ProviderJob {
   @Column()
   provider: string // e.g., 'provider1', 'provider2'
 
-  @Column()
+  @Column({ name: 'provider_job_id' })
   providerJobId: string
 
-  // eslint-disable-next-line @typescript-eslint/no-unsafe-return
   @ManyToOne(() => Job, (job) => job.providerJobs)
   @JoinColumn({ name: 'job_id' })
   job: Job

@@ -7,6 +7,7 @@ export class CreateCompaniesTable1752942136091 implements MigrationInterface {
             CREATE TABLE ${this.tableName} (
                 id SERIAL PRIMARY KEY,
                 name TEXT UNIQUE NOT NULL,
+                website TEXT,
                 industry TEXT
             );
         `)

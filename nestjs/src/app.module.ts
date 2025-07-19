@@ -6,6 +6,8 @@ import { LoggerModule } from './modules/logger/logger.module'
 import { TypeormLoggerService } from './modules/logger/services/typeorm-logger.service'
 import { APP_FILTER } from '@nestjs/core'
 import { GlobalExceptionFilter } from './filters/global-exception.filter'
+import { JobModule } from './modules/job/job.module'
+import { ScheduleModule } from '@nestjs/schedule'
 @Module({
   providers: [
     {
@@ -27,7 +29,9 @@ import { GlobalExceptionFilter } from './filters/global-exception.filter'
         }
       },
     }),
+    ScheduleModule.forRoot(),
     LoggerModule,
+    JobModule,
   ],
 })
 export class AppModule {}

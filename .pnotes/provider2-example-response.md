@@ -4,35 +4,38 @@ URL: https://assignment.devotel.io/api/provider2/jobs
 
 ```json
 {
-  "metadata": {
-    "requestId": "req-xmnpkqs7m",
-    "timestamp": "2025-07-17T12:51:05.001Z"
-  },
-  "jobs": [
-    {
-      "jobId": "P1-544",
-      "title": "Frontend Developer",
-      "details": {
-        "location": "New York, NY",
-        "type": "Full-Time",
-        "salaryRange": "$70k - $122k"
+  "status": "success",
+  "data": {
+    "jobsList": {
+      "job-116": {
+        "position": "Backend Engineer",
+        "location": { "city": "San Francisco", "state": "NY", "remote": true },
+        "compensation": { "min": 57000, "max": 104000, "currency": "USD" },
+        "employer": {
+          "companyName": "BackEnd Solutions",
+          "website": "https://techcorp.com"
+        },
+        "requirements": {
+          "experience": 2,
+          "technologies": ["JavaScript", "Node.js", "React"]
+        },
+        "datePosted": "2025-07-15"
       },
-      "company": { "name": "DataWorks", "industry": "Analytics" },
-      "skills": ["Python", "Machine Learning", "SQL"],
-      "postedDate": "2025-07-12T06:32:16.484Z"
-    },
-    {
-      "jobId": "P1-571",
-      "title": "Backend Engineer",
-      "details": {
-        "location": "San Francisco, CA",
-        "type": "Full-Time",
-        "salaryRange": "$89k - $108k"
-      },
-      "company": { "name": "Creative Design Ltd", "industry": "Design" },
-      "skills": ["JavaScript", "Node.js", "React"],
-      "postedDate": "2025-07-11T16:32:09.329Z"
+      "job-367": {
+        "position": "Frontend Developer",
+        "location": { "city": "Austin", "state": "TX", "remote": false },
+        "compensation": { "min": 72000, "max": 124000, "currency": "USD" },
+        "employer": {
+          "companyName": "TechCorp",
+          "website": "https://dataworks.com"
+        },
+        "requirements": {
+          "experience": 1,
+          "technologies": ["HTML", "CSS", "Vue.js"]
+        },
+        "datePosted": "2025-07-09"
+      }
     }
-  ]
+  }
 }
 ```
