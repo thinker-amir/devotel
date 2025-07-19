@@ -29,7 +29,7 @@ const configEnvMap = new Map<string, Partial<DataSourceOptions>>([
     },
   ],
   [
-    'testing',
+    'test',
     {
       host: `${process.env.TEST_DATABASE_HOST}`,
       password: `${process.env.TEST_DATABASE_PASSWORD}`,

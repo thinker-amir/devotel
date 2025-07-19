@@ -1,8 +1,8 @@
-import { Inject, Injectable, LoggerService as NestJsLoggerService } from '@nestjs/common'
+import { Inject, Injectable, LoggerService as NestJsLoggerService, Scope } from '@nestjs/common'
 import { LogLevel } from '../enums/LogLevel.enum'
 import { LogType } from '../enums/LogType.enum'
 
-@Injectable()
+@Injectable({ scope: Scope.TRANSIENT })
 export class LoggerService {
   private source = { moduleName: '', fileName: '' }
 

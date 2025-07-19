@@ -21,7 +21,7 @@ describe('LoggerService', () => {
       ],
     }).compile()
 
-    service = module.get<LoggerService>(LoggerService)
+    service = await module.resolve<LoggerService>(LoggerService)
   })
 
   afterEach(() => {

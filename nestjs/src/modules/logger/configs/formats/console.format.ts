@@ -25,7 +25,7 @@ export const consoleFormat: ReturnType<typeof format.combine> = format.combine(
     }) => {
       const dateTime = moment(timestamp).format('MM/DD/YYYY, h:mm:ss A')
       const levelStr = (colorizer as any).colorize(level, level.toUpperCase().padStart(7))
-      const loggerTag = (colorizer as any).colorize(level, `[Logger ${type}]`).padEnd(22)
+      const loggerTag = (colorizer as any).colorize(level, `[Logger ${type}]`).padEnd(23)
 
       const moduleName = source?.moduleName
       const fileName = source?.fileName

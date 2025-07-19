@@ -28,7 +28,12 @@ export const fileFormat: ReturnType<typeof format.combine> = format.combine(
       const hasSource = moduleName || fileName
       const sourceStr = hasSource ? `[${moduleName ?? ''} ${fileName ?? ''}]` : ''
 
-      return `${dateTime} ${typeStr}${levelStr}${sourceStr ? ` ${sourceStr}` : ''} ${message}`
+      const formattedMessage =
+        typeof message === 'object' && message !== null
+          ? JSON.stringify(message, null, 2) // Pretty-print JSON with 2-space indentation
+          : message
+
+      return `${dateTime} ${typeStr}${levelStr}${sourceStr ? ` ${sourceStr}` : ''} ${formattedMessage}`
     },
   ),
 )
