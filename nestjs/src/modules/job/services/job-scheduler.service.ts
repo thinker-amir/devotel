@@ -1,8 +1,8 @@
 import { Injectable } from '@nestjs/common'
 import { Cron, CronExpression } from '@nestjs/schedule'
-import { LoggerService } from '../../../logger/services/logger.service'
-import { LogLevel } from '../../../logger/enums/LogLevel.enum'
-import { JobService } from '../job/job.service'
+import { LoggerService } from '../../logger/services/logger.service'
+import { LogLevel } from '../../logger/enums/LogLevel.enum'
+import { JobService } from './job.service'
 
 @Injectable()
 export class JobSchedulerService {

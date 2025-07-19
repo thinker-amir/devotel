@@ -5,10 +5,10 @@ import { Job } from 'src/database/entities/job.entity'
 import { ProviderJob } from 'src/database/entities/provider-job.entity'
 import { Skill } from 'src/database/entities/skill.entity'
 import { Repository } from 'typeorm'
-import { LoggerService } from '../../../logger/services/logger.service'
-import { LogLevel } from '../../../logger/enums/LogLevel.enum'
-import { UnifiedJobDto } from '../../dto/unified-job.dto'
-import { JobProvider } from '../../interfaces/job-provider.interface'
+import { LoggerService } from '../../logger/services/logger.service'
+import { LogLevel } from '../../logger/enums/LogLevel.enum'
+import { UnifiedJobDto } from '../dto/unified-job.dto'
+import { JobProvider } from '../interfaces/job-provider.interface'
 
 @Injectable()
 export class JobService {

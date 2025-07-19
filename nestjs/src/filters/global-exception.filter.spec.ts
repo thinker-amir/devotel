@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/unbound-method */
 import { Test, TestingModule } from '@nestjs/testing'
 import { HttpException, HttpStatus, ArgumentsHost, Logger } from '@nestjs/common'
 import { ConfigService } from '@nestjs/config'
