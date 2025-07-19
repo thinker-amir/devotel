@@ -8,7 +8,8 @@ import { Company } from 'src/database/entities/company.entity'
 import { Job } from 'src/database/entities/job.entity'
 import { ProviderJob } from 'src/database/entities/provider-job.entity'
 import { Skill } from 'src/database/entities/skill.entity'
-import { JobSchedulerService } from './services/job-scheduler/job-scheduler.service';
+import { JobSchedulerService } from './services/job-scheduler/job-scheduler.service'
+import { LoggerService } from '../logger/services/logger.service'
 
 @Module({
   imports: [HttpModule, TypeOrmModule.forFeature([Job, Company, Skill, ProviderJob])],
@@ -17,14 +18,15 @@ import { JobSchedulerService } from './services/job-scheduler/job-scheduler.serv
     Provider2Service,
     {
       provide: JobService,
-      useFactory: (jobRepo, companyRepo, skillRepo, providerJobRepo, providers) =>
-        new JobService(jobRepo, companyRepo, skillRepo, providerJobRepo, providers),
+      useFactory: (jobRepo, companyRepo, skillRepo, providerJobRepo, providers, loggerService) =>
+        new JobService(jobRepo, companyRepo, skillRepo, providerJobRepo, providers, loggerService),
       inject: [
         getRepositoryToken(Job),
         getRepositoryToken(Company),
         getRepositoryToken(Skill),
         getRepositoryToken(ProviderJob),
         'JOB_PROVIDERS',
+        LoggerService,
       ],
     },
     {
