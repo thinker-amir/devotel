@@ -9,9 +9,10 @@ import { LoggerService } from '../../logger/services/logger.service'
 import { LogLevel } from '../../logger/enums/LogLevel.enum'
 import { UnifiedJobDto } from '../dto/unified-job.dto'
 import { JobProvider } from '../interfaces/job-provider.interface'
+import { TypeOrmCrudService } from '@dataui/crud-typeorm'
 
 @Injectable()
-export class JobService {
+export class JobService extends TypeOrmCrudService<Job> {
   constructor(
     @InjectRepository(Job) private jobRepo: Repository<Job>,
     @InjectRepository(Company) private companyRepo: Repository<Company>,
@@ -20,6 +21,7 @@ export class JobService {
     private readonly providers: JobProvider[],
     private readonly loggerService: LoggerService,
   ) {
+    super(jobRepo)
     this.loggerService.setSource('JobModule', 'JobService')
   }
 

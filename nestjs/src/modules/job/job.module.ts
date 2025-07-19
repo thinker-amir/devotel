@@ -1,18 +1,20 @@
 import { HttpModule } from '@nestjs/axios'
 import { Module } from '@nestjs/common'
-import { Provider1Service } from './services/provider1.service'
-import { Provider2Service } from './services/provider2.service'
-import { JobService } from './services/job.service'
 import { getRepositoryToken, TypeOrmModule } from '@nestjs/typeorm'
 import { Company } from 'src/database/entities/company.entity'
 import { Job } from 'src/database/entities/job.entity'
 import { ProviderJob } from 'src/database/entities/provider-job.entity'
 import { Skill } from 'src/database/entities/skill.entity'
-import { JobSchedulerService } from './services/job-scheduler.service'
 import { LoggerService } from '../logger/services/logger.service'
+import { JobController } from './job.controller'
+import { JobSchedulerService } from './services/job-scheduler.service'
+import { JobService } from './services/job.service'
+import { Provider1Service } from './services/provider1.service'
+import { Provider2Service } from './services/provider2.service'
 
 @Module({
   imports: [HttpModule, TypeOrmModule.forFeature([Job, Company, Skill, ProviderJob])],
+  controllers: [JobController],
   providers: [
     Provider1Service,
     Provider2Service,
